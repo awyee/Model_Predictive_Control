@@ -1,0 +1,875 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Bidding Heuristics for Thermostatic Load Aggregation}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Alexander Yee}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{ESD.S23: Decision-Support Models for Low-Carbon Electric Power Systems}%
+{Yee: Bidding Heuristics for Thermostatic Load Aggregation}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+I explore the various control heuristics that a central controller, such as a load aggregator, can employ in order to optimally manage its thermal load portfolio while respecting temperature constraints. I simulate 10,000 thermostatically controlled loads (TCL) with varying building characteristics of which a load controller has complete control of its HVAC system. I use a Model Predictive Controller (MPC) as well a modified Least Laxity First (LLF) heuristic that generate real-time control action using forecasted weather data, forecasted pricing data and current building temperatures. I show that the MPC heuristic is superior to the LLF heuristic, although both are much superior to the no demand response option from a cost perspective. However, both have significant gaps in both costs and temperature violations with the theoretical optimal load scheduling.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{W}{e} are in the midst of a technological upheaval in the power sector. The rise of renewable integration, the widespread use of Information and Communication Technology (ICT) and a spotlight on the new "big" data that it provides have brought many obstacles but they have also opened new doors. Demand response has been made possible through a combination of these factors and it continues to grow and evolve since it offers much value to the grid. 
+
+For small thermal loads, such as residences, it is often the case where transaction costs (monitoring price signals or otherwise) are too high to warrant response to grid conditions. However, residential space cooling and heating represent a significant portion of electricity demand due to the shear number of them. We have seen the entrance of a middleman, a load aggregator, who offers to control multiple loads to offer the grid the value added service of demand response at a magnitude that is sufficient to warrant attention in the market. In addition, coordinated control of aggregated resources offers additional value since it offers the opportunity for significant load matching to variable generation.
+
+Previous literature on TCLs have looked at similar problems. Mathieu et al takes a control system approach from both a decentralized perspective as well as a centralized control perspective in \cite{mat}. They demonstrate through the use of a proportional controller with the goal of minimizing ON/OFF cycling while using state (temperature) estimation instead of real-time measurement. 
+
+Subramanian et al have written on scheduling heuristics in the context of EVs in \cite{sub}. They investigate the use of the Earliest Deadline First and Least Laxity First (LLF) decision algorithms which are both originally Processor Time Algorithms. In addition, they consider the use of a Receding Horizon Control(RCF) which is a form of Model Predictive Control. They also prove that \textit{Causal Optimal} scheduling policies do not exist; in essence, this means that one cannot generate optimal decisions with only predictive data for the future. As a result, heuristic must be use to generate decisions which hope to be as close to the optimal solution as possible.
+
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+\section {Model Formulation}
+In this paper, I incorporate the control plant model by Mathieu et al found in \cite{mat} with some of the heuristics employed by Subramanian et al in \cite{sub}. Specifically, I simulate TCLs through an RC-model, but the control employed uses either a modified LLF or MPC heuristic.
+
+\subsection{General Parameters: Time Scale, Exogenous Data and Forecasts}
+I ran multiple simulations each spanning 24 hours with 1 hour time steps. The model also used two sets of exogenous data: the ambient temperature \({T_{amb}(h)}\) and electricity prices \({P(h)}\). The temperature data was procured from the NOAA at a station in Durham, New Hampshire (North). The hourly electricity price data was calculated as the average price of the LMPs across the nodes under the jurisdiction of the New England ISO (ISO-NE). The day used was September 9, 2015 when temperatures reached 38 degrees Celsius and electricity prices peaked at \$240 per MWh.
+
+\begin{figure}[b]
+\centering
+\includegraphics[width=\linewidth, height=5cm]{"tempfig"}
+\caption[]{Sample Temperature Forecast Data}
+\label{fig:temp}
+\end{figure}
+
+In order to generate forecasted temperatures \(\hat{T}_{amb}^{\mu}(h)\), I synthetically added Gaussian noise. Forecasted temperatures are generated by the following formula:
+\[ \hat{T}_{amb}^{\mu}(h)=T_{amb}(h)+\sum_{n=\mu}^{h}\epsilon_{n,T}, \mu=1,2...,24\]
+\[\epsilon_{n,T} = \mathcal N (0, \sigma_{n,T}^2)\]
+where \(\sigma_{n}^2\) is the historical standard deviation of the difference between forecasted value and the actual value. \(h\) is the hour that is being forecasted and \(\mu\) is the hour that the forecast was made. This creation of synthetic noise was used in \cite{sub}. Figure \ref{fig:temp} shows the difference between the actual temperature and the temperature forecast in hour 1.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth, height=5cm]{"pricefig"}
+\caption[]{Price Forecast Data}
+\label{fig:price1}
+\end{figure}
+
+Price forecasts \(\hat P(h)\) are also generated using synthetic Gaussian noise, but there is no time-dependent error and the error is proportional to the actual price. The price forecasts are a stand-in for the day-ahead hourly prices which are set once and have little time interdependencies. 
+\[ \hat{P}(h)=P(h) \times (1 + \epsilon_{P}(h)),\]
+\[\epsilon_{P}(h) = \mathcal N (0, \sigma_{n,P}^2)\]
+As the prices are exogenously set, this assumes that the loads have no effect on the market and are purely price-takers. Figure \ref{fig:price1} shows the actual price and the day-ahead price.
+
+\subsection{Thermostatically Controlled Load}
+TCLs are modeled as a thermal mass which losses (or gains) heat naturally to its environment which is dependent on the temperature difference between the interior temperature and the ambient (external) temperature. I am applying the analogy of an electrical circuit with resistance and capacitance where energy transfer is analogous to current, temperature difference is akin to voltage potential and insulation is similar to resistance. Heat can be removed (or added) against the natural flow through HVAC systems that use electricity. Fundamentally, I am applying the law of conservation of energy to a thermal mass:
+\[\Delta Energy = E_{loss/gain}+E_{HVAC}\]
+In each hour, TCLs are characterized with one state variable (temperature) and one decision variable (apply cooling if needed). Each TCL state is independent of every other TCL state. Within TCL \(i\) during hour \(h\), the state variable of  interior temperature \(T_{int}^{i}(h)\) is calculated as a discrete state time model. The decision variable \(x^i(h)\) is under the control of the load aggregator for the entire day. The equation is adapted from \cite{Cal} which uses a similar state time model except where the decision variable is a binary decision (on or off). I justify the use of a continuous variable since I am using a timestep of an hour as opposed to a much smaller timestep: continuity over such a large timestep is achieved by the ability of a load to cycle its equipment over the hour (e.g. a value at 50\% of its capacity would merely mean that the equipment is on for half of the hour).
+\[ T_{int}^{i}(h+1)=T_{int}^{i}(h)+a^i(T_{amb}^{h}-T_{int}^{i}(h))-a^iR^iF^ix^i(h)\]
+\[a^i=e^{-\frac{\tau}{R^iC^i}}\]
+The interior temperature of the building in the next hour \(h+1\) is a function of the current state and the decision to turn on the cooling. \(a^i\) is a dimensionless coefficient which effectively represents the quality of the building's insulation; a low coefficient represents very good insulation whereas a coefficient approaching 1 represents very little insulation capability. \(a^i\) is calculated as an exponential function of the timestep \(\tau\) (1 hour), the thermal resistance \(R^i\) and the thermal capacitance \(C^i\) of the building \(i\). \(F^i\) represents the coefficient of performance of the HVAC system.
+
+\begin {table}[t]
+%\caption{Table 1: Building Parameters}
+\label{tab:param}
+\centering
+\begin{tabular}{ ||c | c c || } 
+ \hline
+ Parameter &Units & Distribution \\
+ \hline 
+ \(c\), Thermal Capacitance & \([Wh/^\circ C m^2]\) & \(U(15, 65)\)  \\ 
+ \(r\), Thermal Resistance & \([kW/^\circ C m^2]\) & \(U(333, 1000)\)  \\
+ \(F\), COP* & \([]\) & \(U(1.5, 3.5)\) \\
+ \(A\), Floor Area & \([m^2]\) & \(U(150, 350)\)\\ 
+  \(x_{max}^i\), Max Power & \([kW]\) & \(U(10, 18)\)\\ 
+ \(T_{max}^{i,b1}(h)\), Max Temp & \([^\circ C]\) & \(U(20, 25)\)\\
+ \(T_{min}^{i,b1}(h)\), Min Temp & \([^\circ C]\) & \(U(16, 19)\)\\ 
+  \(T_{max}^{i,b2}(h)\), Max Temp & \([^\circ C]\) & \(U(22, 30)\)\\
+  \(T_{min}^{i,b2}(h)\), Min Temp & \([^\circ C]\) & \(U(12, 16)\)\\ 
+ \hline
+ 
+\end{tabular}
+\end{table}
+*COP: Coefficient of Performance
+\subsubsection{TCL Parameters}
+Each building in reality will have its own unique combination of parameters; as such I simply use a range of empirically accepted values and randomize each TCL's parameters using a uniform distribution over that range. I also vary the size of the TCL floor areas; thermal resistance \(R\) and thermal capacitance are functions of random variables \(r\) and \(c\), respectively, as well as floor area \(A\). The maximum power that the HVAC unit can draw is also randomized through a uniform distribution. The table above contains the information on the ranges of values these parameters can take.
+
+\[R^i=Ar^i\]
+\[C^i=Ac^i\]
+
+In addition, there are temperature profiles that must be set by each user that describe the allowable temperatures in each hour \(T_{max}^i(h)\) and \(T_{min}^i(h)\). I created two blocks of hours (6pm-9am - b1 and 10am-5pm - b2) that had uniform maximums and minimums, but the actual values are generated on a uniform distribution like all other parameters.
+
+\subsection{Bidding Process and Demand Response}
+I require the load aggregator to 'declare' or bid into the market the amount of demand that it wishes to schedule in each hour. While the prices are not affected by these quantity, the aggregator is constrained by its declaration or the Demand Response constraint imposed by the grid operator (the lower of the two). I assume that the aggregator knows about the Demand Response action at the beginning of the day and can plan accordingly. The aggregator is allowed to change its demand bids or 'declarations' up to 2 hours prior to consumption (representing the closure of the bidding window). As a result, a load aggregator's maximum consumption is determined 2 hours prior to consumption although real-time exogenous factors are not yet known. These form the crux of my problem: 1) how much should a load aggregator declare in the two hour ahead time frame and 2) how should a load aggregator dispatch its loads in real-time to meet these declarations.
+
+\section{Algorithms and Heuristics}
+\subsection{Optimal Load Dispatch}
+I formulate the optimal dispatch if the load aggregator had perfect forecasting for both temperature and weather. This is used as a reference and baseline for the heuristics that will be employed later.
+The linear programming formulation of the optimal dispatch is below:
+
+\[ min \sum_{h=1}^{24}\sum_{i\in I} (P(h) x^i(h)+G_{over}T_{over}^i(h)+G_{under}T_{under}^i(h))\]
+subject to
+
+\begin{tabular}{ l l} 
+(1)$\quad T_{int}^{i}(0)=T_0^i$ & $\forall{} i$ \\
+(2)$\quad T_{int}^{i}(h)-T_{over}^{i}(h) \leq T_{max}^i(h)$ & $\forall{} i, h$\\
+(3)$\quad T_{int}^{i}(h)+T_{under}^{i}(h) \geq T_{min}^i(h)$ & $\forall{} i, h$\\
+(4)$\quad T_{int}^{i}(h+1)=T_{int}^{i}(h)+a^i(T_{amb}(h)$& $\forall{} i, h$\\
+$\qquad \qquad \qquad \qquad -T_{int}^{i}(h))-a^iR^iF^ix^i(h)$&\\
+(5)$\quad x^i(h) \leq x_{max}^i$& $\forall{} i, h$\\
+(6)$\quad \sum_{i\in I}x^i(h) \leq X(h)$& $\forall{} h$\\
+
+\end{tabular}
+
+In the objective function, I impose a arbitrarily large penalty \(G\) for every degree centigrade of temperature that is outside of the threshold \([T_{max}^i(h), T_{max}^i(h)]\). Constraint (1) sets the initial state of the system (the interior temperature\(T_{int}^{i}\)) and is defined as the threshold maximum temperature of that time. Constraints (2) and (3) determines the total temperature violation that might exist; if \(G\) is sufficiently large, then a temperature violation will only occur if there is no feasible solution where all \( T_{int}^{i}(h)\) stay within the bounds of \(T_{max}^i(h)\) and \(T_{max}^i(h)\). This results in a non-zero \(T_{under}^{i}(h)\) or \(T_{over}^{i}(h)\) which applies the penalty in the objective function.
+
+Constraint (4) is the state equation presented in the previous section which ensures the intertemporal temperature relationships are held. Constraint (5) restricts the total power drawn from any building \(i\) by its capacity. Constraint (6) represents the total allowed electricity demand by the aggregator \(X(h)\) and represents the demand response cap when it is needed. \(X(h)\) will generally be the total electricity capacity of all buildings \(\sum_{i \in I} x_{max}^i\) except in the hours that demand response is required by the grid.
+
+\subsection{Model Predictive Control}
+The MPC is a linear programming control that is formulated in a very similar way as the optimal load dispatch except the exogenous values are the forecasts; the MPC is run 24 times (1 for each hour) where each run is one hour forward from the previous run. The MPC model runs are linked through constraint (7) which sets the boundary conditions as the temperature set by the previous MPC run.
+
+For MPC run \(j \in 1..24\)
+
+\[ min \sum_{h=j}^{24}\sum_{i\in I} (\hat{P}^j(h) x^i(h)+G_{over}T_{over}^i(h)+G_{under}T_{under}^i(h))\]
+subject to
+
+\begin{tabular}{ l l} 
+(7)$T_{int}^{i}(j-1)=T_{j-1}^i$ & $\forall{} i$ \\
+(8)$T_{int}^{i}(h)-T_{over}^{i}(h) \leq T_{max}^i(h)$ & $\forall{} i, h \in j..24$\\
+(9)$T_{int}^{i}(h)+T_{under}^{i}(h) \geq T_{min}^i(h)$ & $\forall{} i, h \in j..24$\\
+(10)$T_{int}^{i}(h+1)=T_{int}^{i}(h)+a^i(\hat{T}_{amb}^{j}(h)$& $\forall{} i, h \in j..24$\\
+$\quad \qquad \qquad \qquad -T_{int}^{i}(h))-a^iR^iF^ix^i(h)$&\\
+(11)$x^i(h) \leq x_{max}^i$& $\forall{} i, h \in j..24$\\
+(12)$\sum_{i\in I}x^i(h) \leq \min(X(h),\sum_{i\in I}x^i_{j-2}(h)) $& $\forall{} h \in j..24$\\
+\end{tabular}
+
+Also note in constraint 12, the total electricity constraint $X_{j-2}(h)$ is the minimum between the exogenously determined Demand Response and as the demand declaration by the load aggregator in timestep $j-2$.
+
+\subsection{Least Laxity First}
+The LLF heuristic determines the latest time it can completely neglect resources and at which point it must service them at the maximum rate in order to meet its constraint. In other words, it determines the time at which the "do nothing" option is no longer available which I will call the \textit {deferrable deadline}. Typically, LLF is used for independent tasks each with singular deadlines which yields a single \textit {deferrable deadline} for each task.
+However in the case of loads, we have independent tasks with multiple deadlines. I consider every hour a deadline to meet the temperature requirement of that hour although actions taken to meet the other hourly deadlines will no doubt effect this. In order to adapt LLF, I search for the hour that has the strictest (earliest) \textit {deferrable deadline} where I must service the load.
+
+To determine the \textit {deferrable deadline} \(\phi\) of hour \(\eta\) starting in hour \(h\), I generate a function \(F_h^i(s)\) which is the temperature of the load starting at hour \(h\) until hour \(\eta\) where no cooling is performed. Next, I generate second function \(F_{\eta}^i(s)\) which looks backward from hour \(\eta\) to hour \(h\) and this represents the load as if it had the cooling system on at its maximum capacity. \textit {deferrable deadline} \(\phi\) is the rounded down hour that these two function intersect.
+
+\[\phi^i(h,\eta)=floor[\arg_{s} (F_h^i(s)=F_{\eta}^i(s))], \forall i, \eta \in h..24\]
+
+Next, I search amongst the buildings for the earliest deferrable deadline and service them first. I repeat this process until there is no longer any capacity remaining. The capacity is determined by running the MPC model and determining the total capacity that would be optimal in a system. However, unlike the MPC model, the real-time dispatch decisions of loads is not governed by the predicted optimal allocation, but based on the laxity of the loads.
+
+\[\]
+\section{Results and Discussion}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth, height=5cm]{"consumption"}
+\caption[]{Total Electricity Consumption in Each Scenario}
+\label{fig:elec}
+\end{figure*}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\linewidth, height=5cm]{"tempbreach"}
+\caption[]{Average Temperature Breach in Each Scenario}
+\label{fig:Tbr}
+\end{figure*}
+
+
+%\caption{Table 1: Building Parameters}
+
+\begin {table*}[t]
+\centering
+
+\begin{tabular}{ ||l |c c c|| } 
+ \hline
+ Scenario &Total Cost(\$) &Energy Consumed (MWh)& Average Temperature Breach over day ($^\circ$ C hr)\\
+ \hline 
+ No Demand Response & 36,709  & 222 & 0\\ 
+ Optimal DR & 16,858 & 340 & 0\\
+ MPC DR & 18,647 & 338 & 0.08\\
+ LLF DR & 20,225 & 343 & 1.47\\ 
+
+ \hline
+ \end{tabular}
+ \label{tab:result}
+\end{table*}
+
+Overall, both MPC and LLF heuristics achieve considerable demand response: over 10,000 TCLs each averaging 14 kW in size, I show in Figure \ref{fig:elec} that achieve almost 80 MW in demand reduction in hour 18 and around 25 MW in the adjoining hours. This is done by intelligently shifting demand to earlier in the day when it is both cooler and the electricity price is cheaper. The TCLs use their heat storage capability to maintain temperatures within acceptable conditions. I also show that the majority of demand response is caused by demand shifting as a reaction to prices as the demand response cap is tight for only 1 hour (hour)
+
+I find that both the MPC and LLF heuristics are prone to severe error relative to the optimal dispatch due to the difference between in the day-ahead price and real-time price previously shown in Figure \ref{fig:price1}. Notably, Figure \ref{fig:elec} shows that both the MPC and LLF models scheduled a significant amount of load in hours 4 and 10, whereas the optimal schedule had consumption spikes in hours 6, 9 and 11.
+
+In terms of avoiding temperature breaches, neither MPC nor LLF do a perfect job. As shown in Figure \ref{fig:Tbr}, the optimal schedule has no temperature breaches (i.e. incurs no temperature penalties due to having insufficient capacity) $0^\circ$C. However, both MPC and LLF have temperature breaches due to suboptimal scheduling; there are suboptimal scheduling decisions that are made in prior hours based on predictions that differ from the real-time values. These improper decisions force them into situations where either:
+\begin{enumerate}
+  \item they have a tight energy constraint due to demand response caps which was the case in hour 18,
+  \item	they underestimated their energy requirement in $j-2$ hours and therefore their declared energy consumption was too low to allow them to meet their temperature obligation, or
+  \item individual TCLs are in a position where their HVAC capacity is insufficient to meet their temperature obligation.
+\end{enumerate}
+I hypothesize that, other than hour 18, that situation 2 was the more likely issue rather than situation 3. I point towards Figure \ref{fig:temp} which shows that temperature forecasts were consistently under the actual temperature; as a result loads were consistently taking in more heat than was anticipated and as a result could not cool themselves sufficiently to meet their temperature obligation given their declared commitment. This time lag coupled with a persistent forecast error meant that the system was consistently underestimating its consumption needs which meant that its demand declaration 2 hours prior to consumption was constantly insufficient to meet the heat load. 
+
+This points for a need for a more stochastic model that will take into account the chance that the temperature will deviate from its predicted path. Another approach would be to add an arbitrary factor of safety in the demand declarations so that buildings are able to consume more in real-time than what is anticipated. Yet another method to solving this issue of temperature breaches is to cool the buildings more aggressively during low cost hours. This would mean forcing minimum loads or decreasing the maximum temperature thresholds artificially to ensure that the heuristic is more conservative in its reliance on future hours for cooling.
+
+In terms of energy, the least energy solution remains the option with no demand response: demand response in this case causes TCLs to store cooled air for some non-trivial time. There is a transactional energy cost (heat loss) of storing and as a result the act of purchasing energy during lower cost hours requires more energy than meeting cooling demand as it arises. However since there are large price differentials, it makes economic sense to purchase energy during lower cost hours albeit the quantities purchased will be larger. However if the price differentials were not as large, it is likely that there would be less of a demand response due to price shifting. In a hypothetical case where the price differentials are small relative to the energy losses, the demand response exogenous cap would become more important in ensuring sufficient demand response and it would be likely this exogenous cap would be the binding constraint. The energy consumption of all of the demand response options are very similar, but all consume about 50\% more energy than the no demand response option.
+
+In terms of total costs, the demand response options all show significant savings compared to the scenario with no demand response. While consumers are not exposed to the price, they are insensitive to wild price spikes like the ones that occurred on this day. However, the costs to the system are real and they are spread across all hours and consumers as a result. I show that any of the demand response heuristics demonstrate significant savings during days with significant price differentials. In this scenario, the MPC and LLF methods save 49\% and 45\%, respectively, of the total cost of the no demand response scenario. However, both involve the intangible decrease in comfort to building occupants. However, the optimal solutions shows that if the load aggregator was omniscient, it could lower its costs further and with no temperature violations as the MPC and LLF methods were 11\% and 20\% more expensive than the optimal load dispatch. The optimal dispatch is unlikely to be ever be achieved, so it is likely the load aggregator can either spend more money to reduce temperature breaches or achieve a lower cost through acceptance of more temperature breaches.
+
+\subsection{MPC vs. LLF}
+I show that the MPC method of allocating load dispatches based on the predictive model rather than load laxity is superior through lower costs and lower temperature violations (by two orders of magnitude). The issue with LLF likely lies in its focus on deadlines causes it to overcommit to units that have early deadlines while undercommitting to units with later deadlines. This does not affect the short term, but has cascading effects in the long term. Figure \ref{fig:Tbr} shows that the majority of temperature breaches occurred later in the day as the loads that LLF neglected could no longer fulfill their deadline. The MPC approach considers this issue and allocates load based on its predicted need in the future. It is likely the additional temperature breaches in LLF emerged from situation 3 described above.
+ 
+
+\section{Conclusion}
+
+My models have shown that a MPC and LLF approach to demand response show significant savings when compared to the no demand response option. However, they both are deficient in cost and temperature violation when compared to the theoretical optimal demand response schedule. MPC offers significant empirical advantages over LLF in both costs and temperature violations. Further research on a stochastic MPC heuristic should be conducted to determine its gains (if any) in reduced temperature breaches. It should be determined if this solution is strictly better in terms of costs and temperature breaches or if there exists a trade-off. Finally, research should be conducted of the overall performance of both heuristics and the proposed stochastic heuristic across all types of days instead of just exceptional days.
+
+
+
+
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+\section*{Acknowledgment}
+I would like to acknowledge the help of the various professors who have imparted the essential knowledge for this paper: Dr. Carlos Batlle, Dr. Javier Garcia-Gonzales, Dr. Andres Ramos and Dr. Pablo Rodilla. The same goes for the teaching assistant, Michael Davidson, who's clarifications were timely and succinct. Special thanks also goes to my classmates who endured my disturbing late entrances to class as well as specifically to Jordan and Turner who kept me company when writing this paper. Finally, a huge thank you to Dr. Claudio Vergara for organizing and teaching this course and without him this course would not have run.
+
+%The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+\bibitem{mat}
+J.L. Mathieu, S. Koch, D.S. Callaway, \emph{State Estimation and Control of Electric Loads to Manage Real-Time Energy Imbalance}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE TRANSACTIONS ON POWER SYSTEMS, 2013.
+\bibitem{sub}
+A. Subramanian, M. Garcia, A. Dominguez-Garcia, D. Callawayx, K. Poolla, P. Varaiya, \emph{Real-time Scheduling of Deferrable Electric Loads}.\hskip 1em plus
+  0.5em minus 0.4em\relax Presented at American Control Conference, 2012.
+\bibitem{Cal}
+D.S. Callaway  \emph{Tapping the energy storage potential in electric loads to deliver load following and regulation}.\hskip 1em plus
+  0.5em minus 0.4em\relax Energy Conversion and Management, 2009.
+
+\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+
+
+% if you will not have a photo at all:
+\begin{IEEEbiographynophoto}{Alexander Yee}
+received his B.A.Sc. in Engineering Science as an Energy Systems Major from the University of Toronto in 2014. Previously, he has worked as a market analyst at the Independent Electricity System Operator of Ontario, Canada. He is currently pursuing an S.M. from the Massachusetts Institute of Technology in the Technology and Policy Program. In addition, he works as a Research Assistant at the MIT Energy Initiative.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
